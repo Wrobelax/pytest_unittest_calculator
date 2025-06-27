@@ -1,4 +1,4 @@
-_Project status_: In progress - initialized.
+_Project status_: In progress - testing.
 
 
 ### **Project description**
@@ -9,7 +9,7 @@ The project uses test-driven development (TDD), test parametrization and excepti
 #### Features
 - Basic math operations: add, subtract, multiply, divide
 - Power and square root
-- Error handling: division by zero
+- Error handling: ZeroDivisionError, ValueError
 
 #### Tech Stack
 - Python 3.11+ (used 3.13)
