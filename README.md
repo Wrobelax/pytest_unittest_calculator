@@ -3,7 +3,6 @@
 
 ## **Project description**
 A simple Python calculator library written for pytest and unittest demonstration.
-The project uses test-driven development (TDD), test parametrization and exceptions handling.
 
 
 ### Features
