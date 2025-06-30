@@ -48,5 +48,5 @@ _Number of tests_ - 81 individual tests for unittest and pytest (162 in total).
 - - source .venv/bin/activate
 - - .venv\Scripts\activate
 - **Install required packages:** pip install pytest
-- **Run unittest and save results:**: python -m unittest discover testing_unittest > test_results.txt 2>&1
+- **Run unittest and save results:** python -m unittest discover testing_unittest > test_results.txt 2>&1
 - **Run pytest and save results (pytest file only):** pytest testing_pytest -v > pytest_results.txt 2>&1
