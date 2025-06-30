@@ -48,3 +48,14 @@ class Calculator:
         if a < 0:
             raise ValueError("Cannot take a square root of a negative number!")
         return math.sqrt(a)
+
+    def logarithm(self, a, b = None):
+        self._validate_number(a)
+        if b is None:
+            return math.log(a)
+        if a <= 0:
+            raise ValueError("Logarithm must be a positive number!")
+        self._validate_number(b)
+        if b <= 0 or b == 1:
+            raise ValueError("Logarithm base must be positive and different from 1!")
+        return math.log(a, b)

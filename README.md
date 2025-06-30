@@ -2,11 +2,15 @@
 
 
 ## **Project description**
-A simple Python calculator library written for pytest and unittest demonstration. 
-The project utilizes TDD (test-driven development) and parametrization.
+A Python calculator library written for pytest and unittest demonstration. 
+The calculator covers addition, subtraction, multiplication, division, square root of a number, logarithm.
+Although the calculator operations and tests basing on the same math module or operators in some cases, thus expected results should be the same and testing might find irrelevant, the purpose of the project was not the calculator itself.
+Main idea was to create and run tests in both, unittest and pytest to demonstrate potency of the two and implement TDD approach that develops the calculator using tests as the main motion for ideas.
+Also, some tests use math.isclose() instead of regular comparison and standard deviation error was implemented (rel_tol = 1e-9). This was done to differentiate some potential cases that could have mathematically different results due to rounding or working with large/small numbers. It would not happen in current stage of the project because the same functions and/or operators were used. However, to catch such cases beforementioned math.isclose() was used.
 
 _TDD_ - Originally, the calculator was written with utilization of simple functions yet due to needs for further testing it was rewritten in OOP.
 
+_Number of tests_ - 81 individual tests for unittest and pytest (162 in total). 
 
 
 ### Features
