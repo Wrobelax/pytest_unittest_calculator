@@ -3,10 +3,8 @@ from unittest import expectedFailure
 
 # Importing calculator 'operations' and pytest module.
 import pytest
-from pytest_unittest_calculator.calculator.operations import Calculator
+from calculator.operations import Calculator
 import math
-
-from sales_analysis.scripts.sql_database import result
 
 
 # Adding pytest fixture for calculator object.

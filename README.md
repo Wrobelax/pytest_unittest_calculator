@@ -15,8 +15,9 @@ _Number of tests_ - 81 individual tests for unittest and pytest (162 in total).
 
 ### Features
 - Basic math operations: add, subtract, multiply, divide
-- Power and square root
-- Error handling: ZeroDivisionError, ValueError
+- Power and square root, logarithm
+- Error handling: ZeroDivisionError, ValueError, TypeError
+- Assertion checks and math.isclose()
 
 ### Tech Stack
 - Python 3.11+ (used 3.13)
@@ -48,4 +49,4 @@ _Number of tests_ - 81 individual tests for unittest and pytest (162 in total).
 - - .venv\Scripts\activate
 - **Install required packages:** pip install pytest
 - **Run unittest and save results:**: python -m unittest discover testing_unittest > test_results.txt 2>&1
-- **Run pytest and save results (pytest file only):** pytest testing_pytest -v > pytest_results.tzxt 2>&1
+- **Run pytest and save results (pytest file only):** pytest testing_pytest -v > pytest_results.txt 2>&1

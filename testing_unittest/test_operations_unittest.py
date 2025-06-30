@@ -1,7 +1,7 @@
 """Testing operations by using unittest."""
 
 # Importing calculator 'operations' for testing and unittest module.
-from pytest_unittest_calculator.calculator.operations import Calculator
+from calculator.operations import Calculator
 import unittest
 import math
 
