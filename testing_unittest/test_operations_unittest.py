@@ -6,96 +6,321 @@ import unittest
 import math
 
 
+
 # Creating class for testing.
 class TestOperations(unittest.TestCase):
+
 
 # Creating setUp instance for calculator object.
     def setUp(self):
         self.calc = Calculator()
 
 
+
 # Creating test cases for addition.
     def test_add(self):
-        self.assertEqual(self.calc.add(2,3), 5)
+        test_cases = [
+            (5, 8, 13),
+            (12, 6, 18),
+            (30, 1, 31),
+            (1, 2, 3),
+            (9, 19, 28)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a = a, b = b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_negative(self):
-        self.assertEqual(self.calc.add(-1, -3), -4)
+        test_cases = [
+            (-5, -8, -13),
+            (-12, -6, -18),
+            (-30, -1, -31),
+            (-1, -2, -3),
+            (-9, -19, -28)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_zero(self):
-        self.assertEqual(self.calc.add(5, 0), 5)
+        test_cases = [
+            (5, 0, 5),
+            (0, 6, 6),
+            (0, 1, 1),
+            (1, 0, 1),
+            (9, 0, 9)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a = a, b = b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_large_number(self):
-        self.assertEqual(self.calc.add(1e308, 1e308), 2e616)
+        test_cases = [
+            (1e308, 1e308, 2e616),
+            (2e308, 1e309, 3e617),
+            (3e900, 6e099, 9e999),
+            (2e00, 2e00, 4e00),
+            (8e340, 1e220, 9e560)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_small_negative(self):
-        self.assertEqual(self.calc.add(1.0, -1e-10), 0.9999999999)
+        test_cases = [
+            (1, -1e-10, 0.9999999999),
+            (2, -1e-008, 1.99999999),
+            (3, -1e-05, 2.99999),
+            (8, -1e-02, 7.99),
+            (5, -1e-11, 4.99999999999)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_same_numbers(self):
-        self.assertEqual(self.calc.add(17, 17),34)
+        test_cases = [
+            (1, 1, 2),
+            (17, 17, 34),
+            (55, 55, 110),
+            (29, 29, 58),
+            (43, 43, 86)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_int_float(self):
-        self.assertEqual(self.calc.add(5, 3.8), 8.8)
+        test_cases = [
+            (5, 2.3, 7.3),
+            (4, 8.8, 12.8),
+            (5, 1.1, 6.1),
+            (2, 2.9, 4.9),
+            (7, 7.7, 14.7)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_float_int(self):
-        self.assertEqual(self.calc.add(3.8, 5), 8.8)
+        test_cases = [
+            (5.1, 2, 7.1),
+            (4.4, 8, 12.4),
+            (5.1, 1, 6.1),
+            (2.9, 2, 4.9),
+            (7.7, 7, 14.7)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.add(a, b), expected)
+
 
     def test_add_string_first(self):
-        with self.assertRaises(TypeError):
-            self.calc.add("33", 33)
+        test_cases = [
+            ("33", 33),
+            ("8", 8),
+            ("55", 55),
+            ("7", 7),
+            ("57", 57)
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.add(a, b)
+
 
     def test_add_string_second(self):
-        with self.assertRaises(TypeError):
-            self.calc.add(33, "33")
+        test_cases = [
+            (33, "33"),
+            (8, "8"),
+            (55, "55"),
+            (7, "7"),
+            (57, "57")
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.add(a, b)
+
 
     def test_add_none_first(self):
-        with self.assertRaises(TypeError):
-            self.calc.add(None, 76)
+        test_cases = [
+            (None, 33),
+            (None, 8),
+            (None, 55),
+            (None, 7),
+            (None, 57)
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.add(a, b)
+
 
     def test_add_none_second(self):
-        with self.assertRaises(TypeError):
-            self.calc.add(76, None)
+        test_cases = [
+            (33, "33"),
+            (8, "8"),
+            (55, "55"),
+            (7, "7"),
+            (57, "57")
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.add(a, b)
+
 
 
 # Creating test cases for subtraction.
     def test_subtract(self):
-        self.assertEqual(self.calc.subtract(8,5), 3)
+        test_cases = [
+            (13, 5, 8),
+            (17, 7, 10),
+            (22, 20, 2),
+            (8, 1, 7),
+            (51, 47, 4)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_negative(self):
-        self.assertEqual(self.calc.subtract(3, 9), -6)
+        test_cases = [
+            (13, 15, -2),
+            (17, 71, -54),
+            (22, 26, -4),
+            (1, 8, -7),
+            (47, 54, -7)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_negative_number(self):
-        self.assertEqual(self.calc.subtract(9, -3), 12)
+        test_cases = [
+            (13, -15, 28),
+            (17, -71, 88),
+            (22, -26, 48),
+            (1, -8, 9),
+            (47, -54, 101)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_same_numbers(self):
-        self.assertEqual(self.calc.subtract(9, 9), 0)
+        test_cases = [
+            (13, 13, 0),
+            (17, 17, 0),
+            (22, 22, 0),
+            (1, 1, 0),
+            (47, 47, 0)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_zero(self):
-        self.assertEqual(self.calc.subtract(13, 0), 13)
+        test_cases = [
+            (13, 0, 13),
+            (17, 0, 17),
+            (22, 0, 22),
+            (1, 0, 1),
+            (47, 0, 47)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_small_number(self):
         self.assertEqual(self.calc.subtract(1, 1e-15), 0.999999999999999)
+        test_cases = [
+            (1, 1e-15, 0.999999999999999),
+            (2, 1e-15, 1.999999999999999),
+            (4, 2e-22, 4.0),
+            (5, 5e-11, 4.99999999995),
+            (8, 4e-02, 7.96)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_int_float(self):
-        self.assertEqual(self.calc.subtract(7, 2.8),4.2)
+        test_cases = [
+            (8, 3.3, 4.7),
+            (6, 2.2, 3.8),
+            (4, 2.4, 1.6),
+            (5, 1.1, 3.9),
+            (8, 3.24, 4.76)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_float_int(self):
-        self.assertEqual(self.calc.subtract(7.8, 2), 5.8)
+        test_cases = [
+            (7.8, 2, 5.8),
+            (9.9, 5, 4.9),
+            (4.8, 1, 3.8),
+            (5.8, 2, 3.8),
+            (8.76, 4, 4.76)
+        ]
+        for a, b, expected in test_cases:
+            with self.subTest(a=a, b=b):
+                self.assertEqual(self.calc.subtract(a, b), expected)
 
     def test_subtract_minuend_string(self):
-        with self.assertRaises(TypeError):
-            self.calc.subtract("22", 6)
+        test_cases = [
+            ("33", 23),
+            ("6", 4),
+            ("18", 1),
+            ("27", 2),
+            ("2", 12)
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.subtract(a, b)
 
     def test_subtract_subtrahend_string(self):
-        with self.assertRaises(TypeError):
-            self.calc.subtract(22, "6")
+        test_cases = [
+            (33, "23"),
+            (6, "4"),
+            (18, "1"),
+            (27, "2"),
+            (2, "12")
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.subtract(a, b)
 
     def test_subtract_minuend_none(self):
-        with self.assertRaises(TypeError):
-            self.calc.subtract(None, 15)
+        test_cases = [
+            (None, 23),
+            (None, 4),
+            (None, 1),
+            (None, 2),
+            (None, 12)
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.subtract(a, b)
 
     def test_subtract_subtrahend_none(self):
-        with self.assertRaises(TypeError):
-            self.calc.subtract(15, None)
+        test_cases = [
+            (33, None),
+            (6, None),
+            (18, None),
+            (27, None),
+            (2, None)
+        ]
+        for a, b in test_cases:
+            with self.assertRaises(TypeError):
+                self.calc.subtract(a, b)
+
 
 
 # Creating test cases for multiplication.
