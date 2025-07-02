@@ -1,4 +1,4 @@
-```Project status: In progress - testing.```
+```Project status: Completed - closed.```
 
 
 ## **Project description**
